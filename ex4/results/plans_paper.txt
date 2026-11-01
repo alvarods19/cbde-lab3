@@ -1,52 +1,52 @@
 === paper | no_index | Q1: SELECT DISTINCT seriesID FROM views WHERE custID = 1
-HashAggregate  (cost=1.15..1.19 rows=4 width=21) (actual time=0.004..0.004 rows=2.00 loops=1)
+HashAggregate  (cost=1.15..1.19 rows=4 width=21) (actual time=0.012..0.013 rows=2.00 loops=1)
   Group Key: seriesid
   Batches: 1  Memory Usage: 32kB
   Buffers: shared hit=1
-  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=21) (actual time=0.002..0.003 rows=6.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=21) (actual time=0.007..0.008 rows=6.00 loops=1)
         Filter: (custid = 1)
         Rows Removed by Filter: 5
         Buffers: shared hit=1
-Planning Time: 0.006 ms
-Execution Time: 0.008 ms
+Planning Time: 0.065 ms
+Execution Time: 0.024 ms
 
 === paper | no_index | Q2: SELECT * FROM customers
 Seq Scan on customers  (cost=0.00..1.04 rows=4 width=49) (actual time=0.001..0.001 rows=4.00 loops=1)
   Buffers: shared hit=1
-Planning Time: 0.003 ms
-Execution Time: 0.002 ms
+Planning Time: 0.005 ms
+Execution Time: 0.003 ms
 
 === paper | no_index | Q3: SELECT COUNT(*) FROM views WHERE custID = 1
-Aggregate  (cost=1.15..1.16 rows=1 width=8) (actual time=0.006..0.006 rows=1.00 loops=1)
+Aggregate  (cost=1.15..1.16 rows=1 width=8) (actual time=0.022..0.022 rows=1.00 loops=1)
   Buffers: shared hit=1
-  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=0) (actual time=0.004..0.004 rows=6.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=0) (actual time=0.015..0.016 rows=6.00 loops=1)
         Filter: (custid = 1)
         Rows Removed by Filter: 5
+        Buffers: shared hit=1
+Planning Time: 0.030 ms
+Execution Time: 0.045 ms
+
+=== paper | no_index | Q4: SELECT custID, COUNT(seriesID) FROM views GROUP BY custID
+HashAggregate  (cost=1.17..1.21 rows=4 width=12) (actual time=0.005..0.005 rows=4.00 loops=1)
+  Group Key: custid
+  Batches: 1  Memory Usage: 32kB
+  Buffers: shared hit=1
+  ->  Seq Scan on views  (cost=0.00..1.11 rows=11 width=25) (actual time=0.001..0.002 rows=11.00 loops=1)
         Buffers: shared hit=1
 Planning Time: 0.008 ms
 Execution Time: 0.013 ms
 
-=== paper | no_index | Q4: SELECT custID, COUNT(seriesID) FROM views GROUP BY custID
-HashAggregate  (cost=1.17..1.21 rows=4 width=12) (actual time=0.003..0.003 rows=4.00 loops=1)
-  Group Key: custid
-  Batches: 1  Memory Usage: 32kB
-  Buffers: shared hit=1
-  ->  Seq Scan on views  (cost=0.00..1.11 rows=11 width=25) (actual time=0.001..0.001 rows=11.00 loops=1)
-        Buffers: shared hit=1
-Planning Time: 0.005 ms
-Execution Time: 0.008 ms
-
 === paper | index_custid | Q1: SELECT DISTINCT seriesID FROM views WHERE custID = 1
-HashAggregate  (cost=1.15..1.19 rows=4 width=21) (actual time=0.014..0.014 rows=2.00 loops=1)
+HashAggregate  (cost=1.15..1.19 rows=4 width=21) (actual time=0.009..0.010 rows=2.00 loops=1)
   Group Key: seriesid
   Batches: 1  Memory Usage: 32kB
   Buffers: shared hit=1
-  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=21) (actual time=0.009..0.010 rows=6.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..1.14 rows=6 width=21) (actual time=0.006..0.007 rows=6.00 loops=1)
         Filter: (custid = 1)
         Rows Removed by Filter: 5
         Buffers: shared hit=1
-Planning Time: 0.022 ms
-Execution Time: 0.034 ms
+Planning Time: 0.012 ms
+Execution Time: 0.022 ms
 
 === paper | index_custid | Q2: SELECT * FROM customers
 Seq Scan on customers  (cost=0.00..1.04 rows=4 width=49) (actual time=0.001..0.001 rows=4.00 loops=1)
@@ -61,16 +61,16 @@ Aggregate  (cost=1.15..1.16 rows=1 width=8) (actual time=0.003..0.003 rows=1.00 
         Filter: (custid = 1)
         Rows Removed by Filter: 5
         Buffers: shared hit=1
-Planning Time: 0.006 ms
+Planning Time: 0.007 ms
 Execution Time: 0.005 ms
 
 === paper | index_custid | Q4: SELECT custID, COUNT(seriesID) FROM views GROUP BY custID
-HashAggregate  (cost=1.17..1.21 rows=4 width=12) (actual time=0.011..0.012 rows=4.00 loops=1)
+HashAggregate  (cost=1.17..1.21 rows=4 width=12) (actual time=0.004..0.004 rows=4.00 loops=1)
   Group Key: custid
   Batches: 1  Memory Usage: 32kB
   Buffers: shared hit=1
-  ->  Seq Scan on views  (cost=0.00..1.11 rows=11 width=25) (actual time=0.005..0.006 rows=11.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..1.11 rows=11 width=25) (actual time=0.002..0.002 rows=11.00 loops=1)
         Buffers: shared hit=1
-Planning Time: 0.021 ms
-Execution Time: 0.026 ms
+Planning Time: 0.005 ms
+Execution Time: 0.008 ms
 

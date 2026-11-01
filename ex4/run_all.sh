@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Exercici 4: carrega les dades i executa Q1-Q4 amb EXPLAIN (ANALYZE, BUFFERS)
 # a tres escales (paper, small, large), sense índex i amb un índex a VIEWS(custID).
-# Credencials per entorn: PGPASSWORD=... ./run_all.sh  (no es guarden al script)
+# Credencials: PGPASSWORD per entorn o al fitxer local.env (ignorat per git), mai al script.
 set -euo pipefail
 cd "$(dirname "$0")"
+[[ -f local.env ]] && { set -a; . ./local.env; set +a; }   # contrasenya local, ignorada per git
 
 export PGHOST=${PGHOST:-localhost} PGPORT=${PGPORT:-5435} PGUSER=${PGUSER:-lab3} PGDATABASE=${PGDATABASE:-columnar_lab}
 PSQL="psql -X -q -v ON_ERROR_STOP=1"

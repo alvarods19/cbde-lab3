@@ -1,60 +1,60 @@
 === large | no_index | Q1: SELECT DISTINCT seriesID FROM views WHERE custID = 1
-Unique  (cost=21849.32..21849.82 rows=29 width=21) (actual time=24.141..24.154 rows=30.00 loops=1)
+Unique  (cost=21849.32..21849.82 rows=29 width=21) (actual time=24.235..24.247 rows=30.00 loops=1)
   Buffers: shared hit=9346
-  ->  Sort  (cost=21849.32..21849.57 rows=100 width=21) (actual time=24.141..24.144 rows=103.00 loops=1)
+  ->  Sort  (cost=21849.32..21849.57 rows=100 width=21) (actual time=24.235..24.238 rows=103.00 loops=1)
         Sort Key: seriesid
         Sort Method: quicksort  Memory: 25kB
         Buffers: shared hit=9346
-        ->  Seq Scan on views  (cost=0.00..21846.00 rows=100 width=21) (actual time=0.003..24.112 rows=103.00 loops=1)
+        ->  Seq Scan on views  (cost=0.00..21846.00 rows=100 width=21) (actual time=0.002..24.207 rows=103.00 loops=1)
               Filter: (custid = 1)
               Rows Removed by Filter: 999897
               Buffers: shared hit=9346
-Planning Time: 0.023 ms
-Execution Time: 24.161 ms
+Planning Time: 0.019 ms
+Execution Time: 24.253 ms
 
 === large | no_index | Q2: SELECT * FROM customers
-Seq Scan on customers  (cost=0.00..204.00 rows=10000 width=49) (actual time=0.001..0.285 rows=10000.00 loops=1)
+Seq Scan on customers  (cost=0.00..204.00 rows=10000 width=49) (actual time=0.001..0.397 rows=10000.00 loops=1)
   Buffers: shared hit=104
-Planning Time: 0.004 ms
-Execution Time: 0.507 ms
+Planning Time: 0.005 ms
+Execution Time: 0.697 ms
 
 === large | no_index | Q3: SELECT COUNT(*) FROM views WHERE custID = 1
-Aggregate  (cost=21846.25..21846.26 rows=1 width=8) (actual time=24.393..24.393 rows=1.00 loops=1)
+Aggregate  (cost=21846.25..21846.26 rows=1 width=8) (actual time=25.258..25.259 rows=1.00 loops=1)
   Buffers: shared hit=9346
-  ->  Seq Scan on views  (cost=0.00..21846.00 rows=100 width=0) (actual time=0.011..24.387 rows=103.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..21846.00 rows=100 width=0) (actual time=0.007..25.253 rows=103.00 loops=1)
         Filter: (custid = 1)
         Rows Removed by Filter: 999897
         Buffers: shared hit=9346
-Planning Time: 0.033 ms
-Execution Time: 24.416 ms
+Planning Time: 0.018 ms
+Execution Time: 25.273 ms
 
 === large | no_index | Q4: SELECT custID, COUNT(seriesID) FROM views GROUP BY custID
-HashAggregate  (cost=24346.00..24445.40 rows=9940 width=12) (actual time=108.011..108.674 rows=10000.00 loops=1)
+HashAggregate  (cost=24346.00..24445.68 rows=9968 width=12) (actual time=107.541..108.157 rows=10000.00 loops=1)
   Group Key: custid
   Batches: 1  Memory Usage: 793kB
   Buffers: shared hit=9346
-  ->  Seq Scan on views  (cost=0.00..19346.00 rows=1000000 width=25) (actual time=0.005..29.844 rows=1000000.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..19346.00 rows=1000000 width=25) (actual time=0.004..29.654 rows=1000000.00 loops=1)
         Buffers: shared hit=9346
-Planning Time: 0.039 ms
-Execution Time: 108.907 ms
+Planning Time: 0.025 ms
+Execution Time: 108.384 ms
 
 === large | index_custid | Q1: SELECT DISTINCT seriesID FROM views WHERE custID = 1
-HashAggregate  (cost=10.43..10.71 rows=29 width=21) (actual time=0.024..0.026 rows=30.00 loops=1)
+HashAggregate  (cost=10.43..10.71 rows=29 width=21) (actual time=0.040..0.043 rows=30.00 loops=1)
   Group Key: seriesid
   Batches: 1  Memory Usage: 32kB
   Buffers: shared hit=4
-  ->  Index Scan using views_custid_idx on views  (cost=0.42..10.18 rows=100 width=21) (actual time=0.002..0.010 rows=103.00 loops=1)
+  ->  Index Scan using views_custid_idx on views  (cost=0.42..10.18 rows=100 width=21) (actual time=0.004..0.016 rows=103.00 loops=1)
         Index Cond: (custid = 1)
         Index Searches: 1
         Buffers: shared hit=4
-Planning Time: 0.007 ms
-Execution Time: 0.032 ms
+Planning Time: 0.011 ms
+Execution Time: 0.054 ms
 
 === large | index_custid | Q2: SELECT * FROM customers
-Seq Scan on customers  (cost=0.00..204.00 rows=10000 width=49) (actual time=0.001..0.276 rows=10000.00 loops=1)
+Seq Scan on customers  (cost=0.00..204.00 rows=10000 width=49) (actual time=0.001..0.539 rows=10000.00 loops=1)
   Buffers: shared hit=104
-Planning Time: 0.003 ms
-Execution Time: 0.490 ms
+Planning Time: 0.006 ms
+Execution Time: 1.000 ms
 
 === large | index_custid | Q3: SELECT COUNT(*) FROM views WHERE custID = 1
 Aggregate  (cost=6.42..6.43 rows=1 width=8) (actual time=0.010..0.010 rows=1.00 loops=1)
@@ -64,16 +64,16 @@ Aggregate  (cost=6.42..6.43 rows=1 width=8) (actual time=0.010..0.010 rows=1.00 
         Heap Fetches: 0
         Index Searches: 1
         Buffers: shared hit=4
-Planning Time: 0.005 ms
+Planning Time: 0.006 ms
 Execution Time: 0.012 ms
 
 === large | index_custid | Q4: SELECT custID, COUNT(seriesID) FROM views GROUP BY custID
-HashAggregate  (cost=24346.00..24445.58 rows=9958 width=12) (actual time=109.011..109.658 rows=10000.00 loops=1)
+HashAggregate  (cost=24346.00..24446.09 rows=10009 width=12) (actual time=107.346..107.964 rows=10000.00 loops=1)
   Group Key: custid
   Batches: 1  Memory Usage: 793kB
   Buffers: shared hit=9346
-  ->  Seq Scan on views  (cost=0.00..19346.00 rows=1000000 width=25) (actual time=0.003..30.012 rows=1000000.00 loops=1)
+  ->  Seq Scan on views  (cost=0.00..19346.00 rows=1000000 width=25) (actual time=0.003..29.367 rows=1000000.00 loops=1)
         Buffers: shared hit=9346
-Planning Time: 0.049 ms
-Execution Time: 109.916 ms
+Planning Time: 0.043 ms
+Execution Time: 108.214 ms
 

@@ -1,25 +1,25 @@
 schema,variant,query,root_node,scans,rows,buffers_8KB,median_ms
-paper,no_index,Q1,HashAggregate,Seq Scan,2.00,1,0.008
-paper,no_index,Q2,Seq Scan on customers,Seq Scan,4.00,1,0.002
-paper,no_index,Q3,Aggregate,Seq Scan,1.00,1,0.004
-paper,no_index,Q4,HashAggregate,Seq Scan,4.00,1,0.008
-paper,index_custid,Q1,HashAggregate,Seq Scan,2.00,1,0.022
+paper,no_index,Q1,HashAggregate,Seq Scan,2.00,1,0.030
+paper,no_index,Q2,Seq Scan on customers,Seq Scan,4.00,1,0.003
+paper,no_index,Q3,Aggregate,Seq Scan,1.00,1,0.020
+paper,no_index,Q4,HashAggregate,Seq Scan,4.00,1,0.013
+paper,index_custid,Q1,HashAggregate,Seq Scan,2.00,1,0.013
 paper,index_custid,Q2,Seq Scan on customers,Seq Scan,4.00,1,0.002
 paper,index_custid,Q3,Aggregate,Seq Scan,1.00,1,0.005
-paper,index_custid,Q4,HashAggregate,Seq Scan,4.00,1,0.026
-small,no_index,Q1,Unique,Seq Scan,9.00,94,0.498
-small,no_index,Q2,Seq Scan on customers,Seq Scan,1000.00,11,0.088
-small,no_index,Q3,Aggregate,Seq Scan,1.00,94,0.295
-small,no_index,Q4,HashAggregate,Seq Scan,1000.00,94,2.169
-small,index_custid,Q1,HashAggregate,Index Scan,9.00,3,0.010
-small,index_custid,Q2,Seq Scan on customers,Seq Scan,1000.00,11,0.089
-small,index_custid,Q3,Aggregate,Index Only Scan,1.00,3,0.015
-small,index_custid,Q4,HashAggregate,Seq Scan,1000.00,94,1.247
-large,no_index,Q1,Unique,Seq Scan,30.00,9346,24.216
-large,no_index,Q2,Seq Scan on customers,Seq Scan,10000.00,104,0.541
-large,no_index,Q3,Aggregate,Seq Scan,1.00,9346,24.377
-large,no_index,Q4,HashAggregate,Seq Scan,10000.00,9346,109.059
-large,index_custid,Q1,HashAggregate,Index Scan,30.00,4,0.031
-large,index_custid,Q2,Seq Scan on customers,Seq Scan,10000.00,104,0.492
-large,index_custid,Q3,Aggregate,Index Only Scan,1.00,4,0.012
-large,index_custid,Q4,HashAggregate,Seq Scan,10000.00,9346,114.994
+paper,index_custid,Q4,HashAggregate,Seq Scan,4.00,1,0.008
+small,no_index,Q1,Unique,Seq Scan,9.00,94,0.370
+small,no_index,Q2,Seq Scan on customers,Seq Scan,1000.00,11,0.100
+small,no_index,Q3,Aggregate,Seq Scan,1.00,94,0.574
+small,no_index,Q4,HashAggregate,Seq Scan,1000.00,94,1.648
+small,index_custid,Q1,HashAggregate,Index Scan,9.00,3,0.014
+small,index_custid,Q2,Seq Scan on customers,Seq Scan,1000.00,11,0.056
+small,index_custid,Q3,Aggregate,Index Only Scan,1.00,3,0.005
+small,index_custid,Q4,HashAggregate,Seq Scan,1000.00,94,2.191
+large,no_index,Q1,Unique,Seq Scan,30.00,9346,24.879
+large,no_index,Q2,Seq Scan on customers,Seq Scan,10000.00,104,0.877
+large,no_index,Q3,Aggregate,Seq Scan,1.00,9346,24.932
+large,no_index,Q4,HashAggregate,Seq Scan,10000.00,9346,108.384
+large,index_custid,Q1,HashAggregate,Index Scan,30.00,4,0.054
+large,index_custid,Q2,Seq Scan on customers,Seq Scan,10000.00,104,1.140
+large,index_custid,Q3,Aggregate,Index Only Scan,1.00,4,0.013
+large,index_custid,Q4,HashAggregate,Seq Scan,10000.00,9346,108.219
