@@ -14,3 +14,4 @@
 2026-11-01 11:18:02.230 CET [13547] LOG:  checkpoint complete: wrote 13403 buffers (81.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 22 recycled; write=269.367 s, sync=0.114 s, total=269.545 s; sync files=358, longest=0.004 s, average=0.001 s; distance=360720 kB, estimate=360720 kB; lsn=0/177B50D8, redo lsn=0/177A73D0
 2026-11-01 12:13:33.028 CET [13547] LOG:  checkpoint starting: time
 2026-11-01 12:13:34.086 CET [13547] LOG:  checkpoint complete: wrote 10 buffers (0.1%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.008 s, sync=0.005 s, total=1.058 s; sync files=6, longest=0.003 s, average=0.001 s; distance=62 kB, estimate=324654 kB; lsn=0/177B6E98, redo lsn=0/177B6E08
+2026-11-01 12:28:33.554 CET [13547] LOG:  checkpoint starting: time
