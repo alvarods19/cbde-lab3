@@ -1,0 +1,31 @@
+--- Q1
+       seriesid       
+----------------------
+ Breaking Bad        
+ Dirk Gently         
+(2 rows)
+
+--- Q2
+ cid | subscription |    city    | timeofsubs |         name         | goldcustomer 
+-----+--------------+------------+------------+----------------------+--------------
+   1 | Regular      | Barcelona  | 2024-01-01 | Oscar R.             | f
+   2 | Regular      | Barcelona  | 2024-01-01 | Marc M.              | f
+   3 | Regular      | Barcelona  | 2024-01-01 | Esther S.            | f
+   4 | Plus         | Barcelona  | 2024-01-01 | Anna Q.              | t
+(4 rows)
+
+--- Q3
+ count 
+-------
+     6
+(1 row)
+
+--- Q4
+ custid | count 
+--------+-------
+      1 |     6
+      2 |     3
+      3 |     1
+      4 |     1
+(4 rows)
+

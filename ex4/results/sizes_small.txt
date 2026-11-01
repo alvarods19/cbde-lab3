@@ -1,0 +1,28 @@
+--- Mida a PostgreSQL (pàgines de 8 KB)
+     relname      | tuples | pages |  size  | tuples_per_page 
+------------------+--------+-------+--------+-----------------
+ customers        |   1000 |    11 | 88 kB  |              91
+ customers_pkey   |   1000 |     5 | 40 kB  |             200
+ views            |  10000 |    94 | 752 kB |             106
+ views_custid_idx |  10000 |    14 | 112 kB |             714
+ views_pkey       |  10000 |    30 | 240 kB |             333
+(5 rows)
+
+--- D i R per columna i estimació columnar (bytes)
+    tab    |     col      |   n   |   d   |   r   | row_bytes | col_bytes 
+-----------+--------------+-------+-------+-------+-----------+-----------
+ views     | custID       | 10000 |  1000 |  1000 |     40000 |     10000
+ views     | endingTime   | 10000 |   920 |  2770 |     50000 |     21220
+ views     | episode      | 10000 |    12 |  9183 |     20000 |     45939
+ views     | season       | 10000 |     8 |  8761 |     10000 |     43813
+ views     | seriesID     | 10000 |    30 |  9677 |    200000 |     48985
+ views     | startingTime | 10000 |   946 |  2794 |     50000 |     21494
+ views     | viewID       | 10000 | 10000 | 10000 |     40000 |    100000
+ customers | cid          |  1000 |  1000 |  1000 |      4000 |     10000
+ customers | city         |  1000 |    10 |   915 |     10000 |      4675
+ customers | goldCustomer |  1000 |     2 |   172 |      1000 |       862
+ customers | name         |  1000 |  1000 |  1000 |     20000 |     26000
+ customers | subscription |  1000 |     2 |   299 |      7000 |      1509
+ customers | timeOfSubs   |  1000 |   345 |   999 |      4000 |      7374
+(13 rows)
+

@@ -1,0 +1,28 @@
+--- Mida a PostgreSQL (pàgines de 8 KB)
+     relname      | tuples | pages |    size    | tuples_per_page 
+------------------+--------+-------+------------+-----------------
+ customers        |      4 |     1 | 8192 bytes |               4
+ customers_pkey   |      4 |     2 | 16 kB      |               2
+ views            |     11 |     1 | 8192 bytes |              11
+ views_custid_idx |     11 |     2 | 16 kB      |               6
+ views_pkey       |     11 |     2 | 16 kB      |               6
+(5 rows)
+
+--- D i R per columna i estimació columnar (bytes)
+    tab    |     col      | n  | d  | r  | row_bytes | col_bytes 
+-----------+--------------+----+----+----+-----------+-----------
+ views     | custID       | 11 |  4 |  6 |        44 |        46
+ views     | endingTime   | 11 |  4 |  6 |        55 |        50
+ views     | episode      | 11 |  8 | 10 |        22 |        66
+ views     | season       | 11 |  4 |  6 |        11 |        34
+ views     | seriesID     | 11 |  5 |  7 |       220 |       135
+ views     | startingTime | 11 |  2 |  3 |        55 |        25
+ views     | viewID       | 11 | 11 | 11 |        44 |        99
+ customers | cid          |  4 |  4 |  4 |        16 |        36
+ customers | city         |  4 |  1 |  1 |        40 |        15
+ customers | goldCustomer |  4 |  2 |  2 |         4 |        12
+ customers | name         |  4 |  4 |  4 |        80 |       100
+ customers | subscription |  4 |  2 |  2 |        28 |        24
+ customers | timeOfSubs   |  4 |  1 |  1 |        16 |         9
+(13 rows)
+

@@ -1,0 +1,16 @@
+2026-11-01 11:08:23.436 CET [13524] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-1.pgdg24.04+2) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+2026-11-01 11:08:23.436 CET [13524] LOG:  listening on IPv4 address "127.0.0.1", port 5435
+2026-11-01 11:08:23.437 CET [13524] LOG:  Unix-domain socket path "/tmp/claude-1000/-home-alvaro-Desktop-CBDE-lab3/d518000f-a6fb-41f4-89e8-50e5361ebef5/scratchpad/.s.PGSQL.5435" is too long (maximum 107 bytes)
+2026-11-01 11:08:23.437 CET [13524] WARNING:  could not create Unix-domain socket in directory "/tmp/claude-1000/-home-alvaro-Desktop-CBDE-lab3/d518000f-a6fb-41f4-89e8-50e5361ebef5/scratchpad"
+2026-11-01 11:08:23.437 CET [13524] FATAL:  could not create any Unix-domain sockets
+2026-11-01 11:08:23.438 CET [13524] LOG:  database system is shut down
+2026-11-01 11:08:32.202 CET [13539] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-1.pgdg24.04+2) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+2026-11-01 11:08:32.202 CET [13539] LOG:  listening on IPv4 address "127.0.0.1", port 5435
+2026-11-01 11:08:32.207 CET [13549] LOG:  database system was shut down at 2026-11-01 11:08:23 CET
+2026-11-01 11:08:32.210 CET [13539] LOG:  database system is ready to accept connections
+2026-11-01 11:09:58.421 CET [13630] ERROR:  VACUUM cannot run inside a transaction block
+2026-11-01 11:09:58.421 CET [13630] STATEMENT:  VACUUM ANALYZE paper.customers; VACUUM ANALYZE paper.views;
+2026-11-01 11:13:32.686 CET [13547] LOG:  checkpoint starting: time
+2026-11-01 11:18:02.230 CET [13547] LOG:  checkpoint complete: wrote 13403 buffers (81.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 22 recycled; write=269.367 s, sync=0.114 s, total=269.545 s; sync files=358, longest=0.004 s, average=0.001 s; distance=360720 kB, estimate=360720 kB; lsn=0/177B50D8, redo lsn=0/177A73D0
+2026-11-01 12:13:33.028 CET [13547] LOG:  checkpoint starting: time
+2026-11-01 12:13:34.086 CET [13547] LOG:  checkpoint complete: wrote 10 buffers (0.1%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.008 s, sync=0.005 s, total=1.058 s; sync files=6, longest=0.003 s, average=0.001 s; distance=62 kB, estimate=324654 kB; lsn=0/177B6E98, redo lsn=0/177B6E08
